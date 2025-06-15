@@ -1,0 +1,1686 @@
+/*==================== GOOGLE FONTS ====================*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/*==================== VARIABLES CSS ====================*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Dark Brown Color Palette ==========*/
+  /* Primary Colors */
+  --primary-brown: #3E2723;
+  --primary-brown-light: #5D4037;
+  --primary-brown-dark: #1B0000;
+  --accent-brown: #8D6E63;
+  --accent-brown-light: #BCAAA4;
+  
+  /* Light Theme Colors */
+  --bg-color-light: #FFF8E1;
+  --container-color-light: #FFFFFF;
+  --text-color-light: #3E2723;
+  --text-color-secondary-light: #5D4037;
+  --border-color-light: #D7CCC8;
+  --shadow-light: rgba(62, 39, 35, 0.1);
+  
+  /* Dark Theme Colors */
+  --bg-color-dark: #1A1A1A;
+  --container-color-dark: #2D2D2D;
+  --text-color-dark: #F5F5F5;
+  --text-color-secondary-dark: #BCAAA4;
+  --border-color-dark: #424242;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+
+  /*========== Current Theme Colors (Default: Light) ==========*/
+  --bg-color: var(--bg-color-light);
+  --container-color: var(--container-color-light);
+  --text-color: var(--text-color-light);
+  --text-color-secondary: var(--text-color-secondary-light);
+  --border-color: var(--border-color-light);
+  --shadow-color: var(--shadow-light);
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Inter', sans-serif;
+  --biggest-font-size: 3rem;
+  --big-font-size: 2.25rem;
+  --h1-font-size: 1.875rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== Margins ==========*/
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-25: 1.25rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+  --mb-3-5: 3.5rem;
+  --mb-4: 4rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+  /*========== Transitions ==========*/
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/*========== Dark Theme ==========*/
+[data-theme="dark"] {
+  /* Core color overrides for dark theme */
+  --bg-color: var(--bg-color-dark); /* #1A1A1A */
+  --container-color: var(--container-color-dark); /* #2D2D2D */
+  --text-color-dark: #FFFFFF; /* Brighter white */
+  --text-color-secondary-dark: #E0E0E0; /* Brighter secondary text */
+
+  /* Update main text variables to use the new dark theme specifics */
+  --text-color: var(--text-color-dark);
+  --text-color-secondary: var(--text-color-secondary-dark);
+
+  --border-color: var(--border-color-dark); /* #424242 */
+  --shadow-color: var(--shadow-dark); /* rgba(0, 0, 0, 0.3) */
+
+  /* Override palette colors for better contrast if they are used for text/important elements */
+  --primary-brown: #A1887F; /* Lighter brown for dark theme, e.g., for titles that use primary-brown */
+  --primary-brown-light: #BCAAA4; /* Adjust if needed, make it lighter than new primary-brown */
+  --accent-brown: #BCAAA4; /* Ensure accent is suitably light */
+  --accent-brown-light: #D7CCC8; /* Ensure light accent is also suitably light */
+}
+
+/* Specific text color adjustments for dark theme */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] .hero__description,
+[data-theme="dark"] .card__description,
+[data-theme="dark"] .about-preview__description,
+[data-theme="dark"] .post-card__content p {
+  color: var(--text-color-secondary-dark);
+}
+
+[data-theme="dark"] .nav__link,
+[data-theme="dark"] .footer__link {
+  color: var(--text-color-secondary-dark); /* Subtler for links */
+}
+
+[data-theme="dark"] .nav__link:hover,
+[data-theme="dark"] .nav__link.active,
+[data-theme="dark"] .footer__link:hover {
+  color: var(--text-color-dark); /* Brighter on hover/active */
+}
+
+/* Elements that use --primary-brown for their color by default, will now use the overridden --primary-brown */
+/* No specific rules needed here if their default 'color: var(--primary-brown)' is already set, */
+/* as the variable itself is changed. This applies to: */
+/* .section__title, .nav__logo, .card__title, .about-preview__title, .stat__number, etc. */
+
+/* Ensure hero name gradient uses the updated dark theme palette variables */
+[data-theme="dark"] .hero__name {
+  background: linear-gradient(45deg, var(--primary-brown), var(--accent-brown));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .typing-text {
+  color: var(--accent-brown); /* Use a lighter color for typing text for better visibility */
+}
+
+[data-theme="dark"] .section__subtitle,
+[data-theme="dark"] .hero__subtitle,
+[data-theme="dark"] .stat__label,
+[data-theme="dark"] .profile__tagline,
+[data-theme="dark"] .profile__label,
+[data-theme="dark"] .post-card__date,
+[data-theme="dark"] .portfolio-preview__type,
+[data-theme="dark"] .footer__subtitle,
+[data-theme="dark"] .footer__copy, /* Footer copy right text */
+[data-theme="dark"] .footer__made {  /* Footer made with text */
+  color: var(--text-color-secondary-dark);
+  opacity: 0.85; /* Slightly increase opacity from default footer for better readability */
+}
+
+/* Ensure buttons in dark theme have good contrast if they use text colors */
+[data-theme="dark"] .btn--secondary {
+  color: var(--primary-brown); /* Uses the overridden lighter primary-brown */
+  border-color: var(--primary-brown);
+}
+
+[data-theme="dark"] .btn--secondary:hover {
+  background-color: var(--primary-brown);
+  color: var(--bg-color-dark); /* Text color on hover for secondary button */
+}
+
+/* Theme toggle slider itself uses primary-brown, so it will be lighter. */
+/* Its icon color is white, which is good. */
+
+/* Form input text color */
+[data-theme="dark"] .form__input {
+    color: var(--text-color-dark);
+}
+[data-theme="dark"] .form__input::placeholder {
+    color: var(--text-color-secondary-dark);
+    opacity: 0.7;
+}
+[data-theme="dark"] .form__label { /* Default state of label */
+    color: var(--text-color-secondary-dark);
+}
+/* Focused label color in forms uses --primary-brown, which is now lighter. */
+
+/* Tech tags in portfolio */
+[data-theme="dark"] .tech-tag {
+  background-color: var(--border-color-dark); /* Darker background */
+  color: var(--text-color-secondary-dark); /* Lighter text */
+}
+
+/*==================== Font size for large devices ==========*/
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --big-font-size: 3rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.5rem;
+    --normal-font-size: 1.125rem;
+    --small-font-size: 1rem;
+    --smaller-font-size: 0.875rem;
+  }
+}
+
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-regular);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color var(--transition-medium), color var(--transition-medium);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+  font-weight: var(--font-semi-bold);
+  line-height: 1.2;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--mb-1);
+}
+
+.grid {
+  display: grid;
+  gap: var(--mb-2);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.section {
+  padding: var(--mb-4) 0;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
+  text-align: center;
+  margin-bottom: var(--mb-0-5);
+  color: var(--primary-brown);
+}
+
+.section__subtitle {
+  font-size: var(--small-font-size);
+  color: var(--text-color-secondary);
+  text-align: center;
+  margin-bottom: var(--mb-3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/*==================== BUTTONS ====================*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mb-0-5);
+  padding: var(--mb-0-75) var(--mb-1-5);
+  background-color: var(--primary-brown);
+  color: white;
+  font-weight: var(--font-medium);
+  border-radius: 0.5rem;
+  transition: all var(--transition-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: var(--small-font-size);
+}
+
+.btn:hover {
+  background-color: var(--primary-brown-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--primary-brown);
+  border: 2px solid var(--primary-brown);
+}
+
+.btn--secondary:hover {
+  background-color: var(--primary-brown);
+  color: white;
+}
+
+.btn--large {
+  padding: var(--mb-1) var(--mb-2);
+  font-size: var(--normal-font-size);
+}
+
+.btn--small {
+  padding: var(--mb-0-5) var(--mb-1);
+  font-size: var(--smaller-font-size);
+}
+
+/*==================== HEADER & NAVIGATION ====================*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--container-color);
+  box-shadow: 0 2px 16px var(--shadow-color);
+  z-index: var(--z-fixed);
+  transition: background-color var(--transition-medium);
+}
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-bold);
+  color: var(--primary-brown);
+  transition: color var(--transition-fast);
+}
+
+.nav__logo:hover {
+  color: var(--primary-brown-light);
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--mb-2);
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--mb-2);
+}
+
+.nav__link {
+  font-weight: var(--font-medium);
+  color: var(--text-color);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--primary-brown);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-brown);
+  transition: width var(--transition-medium);
+}
+
+.nav__link:hover::after,
+.nav__link.active::after {
+  width: 100%;
+}
+
+/*==================== THEME TOGGLE ====================*/
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--mb-0-5);
+  background-color: var(--border-color);
+  border-radius: 25px;
+  padding: 0.25rem;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  transition: background-color var(--transition-medium);
+}
+
+.theme-toggle__slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--primary-brown);
+  border-radius: 50%;
+  transition: transform var(--transition-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+}
+
+[data-theme="dark"] .theme-toggle__slider {
+  transform: translateX(30px);
+}
+
+.theme-toggle__icon {
+  font-size: 0.75rem;
+}
+
+/*==================== MOBILE NAVIGATION ====================*/
+.nav__toggle {
+  display: none;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: var(--header-height);
+    left: -100%;
+    width: 80%; /* Adjusted width */
+    height: calc(100vh - var(--header-height));
+    background-color: var(--container-color);
+    padding: var(--mb-2); /* Added padding */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center items for better appearance */
+    transition: left var(--transition-medium);
+    box-shadow: 0 4px 16px var(--shadow-color);
+  }
+
+  .nav__menu.show {
+    left: 0;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: var(--mb-1-5); /* Adjusted gap */
+    width: 100%; /* Ensure list takes full width of menu */
+    align-items: center; /* Center list items if nav__menu is wider */
+  }
+
+  .nav__link {
+    font-size: var(--h3-font-size);
+    display: block; /* Ensure links are block elements */
+    padding: var(--mb-1) 0; /* Add vertical padding */
+    text-align: center; /* Center text in links */
+    width: 100%; /* Make links take full available width */
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+
+  .theme-toggle {
+    margin-top: var(--mb-2);
+  }
+}
+
+/*==================== CARDS ====================*/
+.card {
+  background-color: var(--container-color);
+  border-radius: 1rem;
+  padding: var(--mb-2);
+  box-shadow: 0 4px 16px var(--shadow-color);
+  transition: all var(--transition-medium);
+  border: 1px solid var(--border-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.card__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-0-5);
+  color: var(--primary-brown);
+}
+
+.card__description {
+  color: var(--text-color-secondary);
+  margin-bottom: var(--mb-1);
+}
+
+/*==================== SOCIAL MEDIA ====================*/
+.social {
+  display: flex;
+  gap: var(--mb-1);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: var(--container-color);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  transition: all var(--transition-medium);
+}
+
+.social__link:hover {
+  background-color: var(--primary-brown);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+/* Platform-specific colors */
+.social__link--google:hover { background-color: #DB4437; }
+.social__link--youtube:hover { background-color: #FF0000; }
+.social__link--facebook:hover { background-color: #1877F2; }
+.social__link--instagram:hover { background-color: #E4405F; }
+.social__link--linkedin:hover { background-color: #0A66C2; }
+.social__link--twitter:hover { background-color: #1DA1F2; }
+.social__link--tiktok:hover { background-color: #000000; }
+.social__link--threads:hover { background-color: #000000; }
+
+/*==================== FORMS ====================*/
+.form {
+  display: grid;
+  gap: var(--mb-1-5);
+}
+
+.form__group {
+  position: relative;
+}
+
+.form__input {
+  width: 100%;
+  padding: var(--mb-0-75) var(--mb-1);
+  background-color: var(--container-color);
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  transition: border-color var(--transition-fast);
+}
+
+.form__input:focus {
+  border-color: var(--primary-brown);
+}
+
+.form__label {
+  position: absolute;
+  top: var(--mb-0-75);
+  left: var(--mb-1);
+  color: var(--text-color-secondary);
+  font-size: var(--small-font-size);
+  transition: all var(--transition-fast);
+  pointer-events: none;
+}
+
+.form__input:focus + .form__label,
+.form__input:not(:placeholder-shown) + .form__label {
+  top: -0.5rem;
+  left: var(--mb-0-5);
+  background-color: var(--bg-color);
+  padding: 0 0.25rem;
+  font-size: var(--smaller-font-size);
+  color: var(--primary-brown);
+}
+
+/*==================== ANIMATIONS ====================*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/*==================== UTILITIES ====================*/
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-1 { margin-bottom: var(--mb-1); }
+.mb-2 { margin-bottom: var(--mb-2); }
+.mb-3 { margin-bottom: var(--mb-3); }
+
+.mt-1 { margin-top: var(--mb-1); }
+.mt-2 { margin-top: var(--mb-2); }
+.mt-3 { margin-top: var(--mb-3); }
+
+.hidden { display: none; }
+.visible { display: block; }
+
+/*==================== RESPONSIVE DESIGN ====================*/
+@media screen and (min-width: 576px) {
+  .container {
+    padding: 0 var(--mb-1-5);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 var(--mb-2);
+  }
+  
+  .section {
+    padding: var(--mb-4) 0 var(--mb-3);
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--mb-3);
+  }
+
+  .connect-preview__post {
+    padding-bottom: var(--mb-3); /* Adds space at the bottom for tablet/PC - Increased value */
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0 var(--mb-2-5);
+  }
+  
+  .section {
+    padding: var(--mb-4) 0;
+  }
+  
+  .grid { /* Default grid for this breakpoint */
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--mb-3-5);
+  }
+
+  /* Specific adjustments for .about-preview section at 1024px+ */
+  .about-preview__content {
+    grid-template-columns: 1fr 1fr; /* Ensure it remains 2 columns */
+    align-items: center;
+    gap: var(--mb-4); /* Can adjust gap if needed, using existing default for now */
+  }
+
+  .about-preview__img {
+    width: 100%; /* Fill the grid cell */
+    max-width: 480px; /* Control maximum size for balance */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the area well if aspect ratio differs */
+    border-radius: 1rem; /* Keep existing style */
+    box-shadow: 0 8px 32px var(--shadow-color); /* Keep existing style */
+    margin: 0 auto; /* Center image if grid cell is wider than max-width */
+  }
+
+  /* Adjustments for .connect-preview section at 1024px+ for balance */
+  .connect-preview__content {
+    grid-template-columns: 0.9fr 1.1fr; /* Give more space to post section (assuming profile, post order) */
+    gap: var(--mb-3-5); /* Increase gap for better separation */
+    align-items: start; /* Align items to the top of their cells */
+    width: 100%; /* Ensure the grid container itself adheres to parent width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+
+  .connect-preview__profile.card,
+  .connect-preview__post.card {
+    min-width: 0; /* Allow grid item to shrink beyond content's intrinsic min-width */
+    max-width: 100%; /* Ensure grid item does not exceed its allocated column width */
+  }
+}
+
+/*==================== SCROLL BAR ====================*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-brown);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-brown-light);
+}
+
+
+
+/*==================== HOME PAGE SPECIFIC STYLES ====================*/
+
+/*========== Hero Section ==========*/
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-height);
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--container-color) 100%);
+  position: relative; /* For SVG positioning */
+  overflow: hidden; /* To contain SVG if it bleeds slightly during animation */
+}
+
+.hero__container {
+  max-width: 1200px;
+  position: relative; /* Ensure content is above SVG */
+  z-index: 1; /* Ensure content is above SVG */
+}
+
+.hero__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--mb-4);
+  align-items: center;
+}
+
+.hero__title {
+  font-size: var(--biggest-font-size);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--mb-1);
+  line-height: 1.1;
+}
+
+.hero__name {
+  color: var(--primary-brown);
+  background: linear-gradient(45deg, var(--primary-brown), var(--accent-brown));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__subtitle {
+  font-size: var(--h1-font-size);
+  color: var(--text-color-secondary);
+  margin-bottom: var(--mb-1-5);
+  min-height: 2.5rem;
+}
+
+.typing-text {
+  color: var(--primary-brown);
+  font-weight: var(--font-semi-bold);
+}
+
+.hero__description {
+  font-size: var(--normal-font-size);
+  line-height: 1.8;
+  margin-bottom: var(--mb-2-5);
+  color: var(--text-color-secondary);
+}
+
+.hero__buttons {
+  display: flex;
+  gap: var(--mb-1-5);
+  flex-wrap: wrap;
+}
+
+.hero__image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__blob {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, var(--primary-brown), var(--accent-brown));
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blob 7s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.hero__social {
+  position: absolute;
+  right: 1rem; /* Default safer position */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--mb-1);
+}
+
+@keyframes blob {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+/* Apply negative offset for hero social icons only on very wide screens */
+@media screen and (min-width: 1200px) {
+  .hero__social {
+    right: -50px; /* Original value, applied when there's likely enough space */
+  }
+}
+
+/*========== About Preview Section ==========*/
+.about-preview__content {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--mb-4);
+}
+
+.about-preview__title {
+  font-size: var(--h2-font-size);
+  color: var(--primary-brown);
+  margin-bottom: var(--mb-1);
+}
+
+.about-preview__description {
+  line-height: 1.8;
+  margin-bottom: var(--mb-2);
+  color: var(--text-color-secondary);
+}
+
+.about-preview__stats {
+  display: flex;
+  gap: var(--mb-2);
+  margin-bottom: var(--mb-2);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat__number {
+  display: block;
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-bold);
+  color: var(--primary-brown);
+}
+
+.stat__label {
+  font-size: var(--small-font-size);
+  color: var(--text-color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.about-preview__img {
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+/*========== Portfolio Preview Section ==========*/
+.portfolio-preview {
+  background-color: var(--container-color);
+}
+
+.portfolio-preview__featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--mb-3);
+  margin-bottom: var(--mb-3);
+  padding: var(--mb-2-5);
+}
+
+.portfolio-preview__image {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.portfolio-preview__img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.portfolio-preview__overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.portfolio-preview__tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: var(--primary-brown);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+}
+
+.portfolio-preview__tech {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: var(--mb-1);
+}
+
+.tech-tag {
+  background-color: var(--border-color);
+  color: var(--text-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: var(--smaller-font-size);
+}
+
+.portfolio-preview__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--mb-2); /* Assuming var(--mb-2) is the desired gap from .grid */
+  margin-bottom: var(--mb-3);
+}
+
+.portfolio-preview__item {
+  text-align: center; /* This is for text inside the card, still useful */
+  padding: var(--mb-1-5); /* Original padding */
+  flex: 0 1 320px; /* Flex properties for items */
+  /* max-width: 320px; */ /* Alternative to flex-basis if preferred, but flex-basis is better */
+}
+
+.portfolio-preview__thumb {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: var(--mb-1);
+}
+
+.portfolio-preview__name {
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-0-5);
+  color: var(--primary-brown);
+}
+
+.portfolio-preview__type {
+  font-size: var(--small-font-size);
+  color: var(--text-color-secondary);
+}
+
+.portfolio-preview__item-description {
+    font-size: var(--small-font-size); /* Consistent with other small text */
+    line-height: 1.5;                 /* Good readability */
+    margin-top: var(--mb-0-5);        /* Space between type and description */
+    /* Inherits color from card__description, which is good */
+}
+
+/*========== Connect Preview Section ==========*/
+/* Contain horizontal overflow specifically for the connect preview section's container */
+.connect-preview > .container {
+    overflow-x: hidden;
+}
+
+.connect-preview__content {
+  grid-template-columns: 1fr 1fr;
+  gap: var(--mb-3);
+}
+
+.profile__header {
+  display: flex;
+  gap: var(--mb-1-5);
+  margin-bottom: var(--mb-2);
+}
+
+.profile__avatar {
+  position: relative;
+  /* Profile avatar and status icon positioning (default relative positioning handles proximity) */
+}
+
+.profile__img {
+  /* Profile avatar and status icon positioning (default relative positioning handles proximity) */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-brown);
+}
+
+.profile__status {
+  /* Profile avatar and status icon positioning (default relative positioning handles proximity) */
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid var(--container-color);
+}
+
+.profile__name {
+  font-size: var(--h3-font-size);
+  color: var(--primary-brown);
+  margin-bottom: var(--mb-0-25);
+}
+
+.profile__tagline {
+  color: var(--text-color-secondary);
+  margin-bottom: var(--mb-1);
+}
+
+.profile__stats {
+  display: flex;
+  gap: var(--mb-1-5);
+}
+
+.profile__stat {
+  text-align: center;
+}
+
+.profile__number {
+  display: block;
+  font-weight: var(--font-bold);
+  color: var(--primary-brown);
+}
+
+.profile__label {
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-secondary);
+}
+
+.profile__social {
+  display: flex;
+  gap: var(--mb-0-75);
+  justify-content: center;
+  margin-top: var(--mb-1-5);
+}
+
+.connect-preview__title {
+  font-size: var(--h3-font-size);
+  color: var(--primary-brown);
+  margin-bottom: var(--mb-1-5);
+}
+
+.connect-preview__action {
+  /* text-align: center; is already on the div via class */
+  margin-top: var(--mb-2); /* Spacing for the moved @madushan button */
+}
+
+/*========== Post Card ==========*/
+.post-card {
+  background-color: var(--container-color);
+  border-radius: 1rem;
+  padding: var(--mb-1-5);
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--mb-1-5);
+}
+
+.post-card__header {
+  display: flex;
+  gap: var(--mb-1);
+  margin-bottom: var(--mb-1);
+}
+
+.post-card__avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-card__info h4 {
+  font-size: var(--normal-font-size);
+  color: var(--primary-brown);
+  margin-bottom: 0.25rem;
+}
+
+.post-card__date {
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-secondary);
+}
+
+.post-card__content p {
+  line-height: 1.6;
+  margin-bottom: var(--mb-1);
+  word-break: break-word; /* Prevent long strings from overflowing */
+  overflow-wrap: break-word; /* Ensure compatibility */
+}
+
+.post-card__image {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: var(--mb-1);
+}
+
+.post-card__actions {
+  display: flex;
+  gap: var(--mb-1-5);
+  padding-top: var(--mb-1);
+  border-top: 1px solid var(--border-color);
+}
+
+.post-card__action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color-secondary);
+  font-size: var(--small-font-size);
+  transition: color var(--transition-fast);
+}
+
+.post-card__action:hover {
+  color: var(--primary-brown);
+}
+
+/*========== CTA Section ==========*/
+.cta {
+  background-color: var(--container-color);
+  color: var(--text-color); /* Adjusted for lighter background */
+}
+
+.cta__title {
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-1);
+  color: var(--primary-brown);
+}
+
+.cta__description {
+  font-size: var(--normal-font-size);
+  line-height: 1.8;
+  margin-bottom: var(--mb-2-5);
+  color: var(--text-color-secondary);
+  opacity: 1;
+}
+
+.cta__buttons {
+  display: flex;
+  gap: var(--mb-1-5);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta .btn {
+  background-color: var(--primary-brown);
+  color: white;
+}
+
+.cta .btn:hover {
+  background-color: var(--primary-brown-light);
+  color: white;
+}
+
+.cta .btn--secondary {
+  background-color: transparent;
+  color: var(--primary-brown);
+  border-color: var(--primary-brown);
+}
+
+.cta .btn--secondary:hover {
+  background-color: var(--primary-brown);
+  color: white;
+}
+
+/*========== Footer ==========*/
+.footer {
+  background-color: var(--container-color);
+  color: var(--text-color);
+  padding: var(--mb-4) 0 var(--mb-2);
+}
+
+.footer__content {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--mb-3);
+  margin-bottom: var(--mb-3);
+}
+
+.footer__title {
+  font-size: var(--h2-font-size);
+  margin-bottom: var(--mb-1);
+  color: var(--primary-brown);
+}
+
+.footer__subtitle {
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-1-5);
+  color: var(--primary-brown-light);
+}
+
+.footer__description {
+  line-height: 1.6;
+  margin-bottom: var(--mb-1-5);
+  color: var(--text-color-secondary);
+  opacity: 1;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__link {
+  color: var(--text-color-secondary);
+  opacity: 1;
+  transition: color var(--transition-fast), opacity var(--transition-fast); /* Ensure color transition is also present */
+}
+
+.footer__link:hover {
+  color: var(--primary-brown);
+  opacity: 1;
+}
+
+.footer__contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color-secondary);
+  opacity: 1;
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--mb-2);
+  border-top: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: var(--mb-1);
+}
+
+.footer__copy,
+.footer__made {
+  color: var(--text-color-secondary);
+  opacity: 1;
+  font-size: var(--small-font-size);
+}
+
+.footer__made i {
+  color: #e74c3c;
+}
+
+/*========== Responsive Design for Home Page ==========*/
+@media screen and (max-width: 767px) { /* Adjusted from 768px to prevent conflict with iPad Mini portrait */
+  .hero__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--mb-2);
+  }
+
+  .hero__image {
+    order: -1;
+  }
+
+  .hero__blob {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero__img {
+    width: 230px;
+    height: 230px;
+  }
+
+  .hero__social {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: var(--mb-1-5);
+    transform: none;
+  }
+
+  .about-preview__content,
+  .portfolio-preview__featured,
+  .connect-preview__content {
+    grid-template-columns: 1fr;
+    gap: var(--mb-2);
+  }
+
+  .about-preview__image-container {
+    display: none; /* Hide About Me image on mobile */
+  }
+
+  /* Centering content for sections in single-column mobile view */
+  .about-preview__content {
+    text-align: center;
+  }
+  /* Assuming .portfolio-preview__featured contains a .card or similar structure that holds the text */
+  .portfolio-preview__featured > .card { /* Target a card if it's a direct child */
+    text-align: center;
+  }
+  /* If .portfolio-preview__featured has direct text children needing centering, use: */
+  /* .portfolio-preview__featured { text-align: center; } */
+
+  .connect-preview__profile.card,
+  .connect-preview__post.card {
+    text-align: center;
+    /* Ensure profile image and status icon are visually connected on mobile (handled by default relative positioning) */
+    /* Center platform icons horizontally on mobile (handled by default flex justify-content or specific grid styling at <480px) */
+  }
+  /* End of centering content for sections */
+
+  .profile__stats-slideshow {
+    display: none; /* Remove social stats container on mobile */
+    /* The below was for stacking them, now they are hidden instead.
+    flex-direction: column;
+    gap: var(--mb-0-75);
+    align-items: stretch;
+    */
+  }
+
+  .profile__stats-slideshow .profile__stat {
+    /* Explicitly define flex properties for internal layout on mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    padding: var(--mb-1); /* Adjust padding for mobile card view */
+    background-color: var(--container-color);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+
+    /* Reset desktop flex item sizing */
+    flex-basis: auto;
+    flex-grow: 0;
+    min-width: 0;
+  }
+
+  .portfolio-preview__grid {
+    /* grid-template-columns: 1fr; */ /* Replaced by flexbox settings */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio-preview__grid .portfolio-preview__item {
+    flex-basis: 100%; /* Allow item to take full width */
+    max-width: 450px; /* But constrain it */
+  }
+
+  .footer__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero__buttons {
+    justify-content: center;
+  }
+
+  .cta__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Tablet layout for portfolio grid (2 columns) */
+/* Flexbox handles this naturally with justify-content: center and item flex-basis. */
+/* The specific media query for 2 columns and the last-child centering rule are no longer needed. */
+/* @media screen and (min-width: 769px) and (max-width: 1023px) { */
+  /* .portfolio-preview__grid { */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* gap: var(--mb-2); */
+  /* } */
+
+  /* .portfolio-preview__grid .portfolio-preview__item.card:last-child:nth-child(odd) { */
+    /* grid-column: 1 / -1; */
+    /* justify-self: center; */
+    /* max-width: 450px; */
+  /* } */
+/* } */
+
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 100vh; /* Ensure full viewport height on small screens */
+    /* padding-top: calc(var(--header-height) + var(--mb-2)); */ /* Removed to use base padding-top & rely on align-items */
+    padding-bottom: 0; /* Reset bottom padding for centering */
+    align-items: center; /* Changed from flex-start to center content vertically */
+  }
+
+  .hero__content { /* Reducing gap for very small screens */
+    gap: var(--mb-1);
+  }
+
+  .hero__title {
+    font-size: 2.2rem; /* Slightly increased for 360-412px clarity */
+    margin-bottom: var(--mb-0-75);
+  }
+
+  .hero__subtitle {
+    font-size: 1.4rem; /* Slightly increased for 360-412px clarity */
+    margin-bottom: var(--mb-0-75); /* Reduced from var(--mb-1) */
+  }
+
+  .hero__description {
+    font-size: 0.9rem; /* Slightly increased for 360-412px clarity */
+    margin-bottom: var(--mb-1); /* Reduced from var(--mb-1-5) */
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--mb-1); /* Reduced from var(--mb-1-5) */
+  }
+
+  .hero__buttons .btn { /* Reduce padding for buttons in hero on small screens */
+    padding: 0.85rem 1.6rem; /* Slightly increased for 360-412px clarity */
+    font-size: var(--small-font-size); /* Ensuring font size is also controlled if btn--large was increasing it */
+  }
+
+  .hero__blob { /* Reducing image size for very small screens */
+    width: 200px; /* Slightly increased for 360-412px clarity */
+    height: 200px; /* Slightly increased for 360-412px clarity */
+  }
+
+  .hero__img {  /* Reducing image size for very small screens */
+    width: 180px; /* Slightly increased for 360-412px clarity */
+    height: 180px; /* Slightly increased for 360-412px clarity */
+  }
+
+  .about-preview__stats {
+    justify-content: center;
+  }
+
+  .portfolio-preview__featured {
+    padding: var(--mb-1-5);
+  }
+
+  .profile__social {
+    display: flex; /* Changed from grid */
+    flex-wrap: wrap; /* Added to allow wrapping */
+    justify-content: center; /* Ensures wrapped lines are centered */
+    gap: var(--mb-1); /* Retain existing gap */
+    /* margin-top will be inherited or can be re-specified if needed */
+  }
+}
+
+/*==================== CONNECT PREVIEW MODIFICATIONS ====================*/
+
+/* Centered Profile Header */
+.profile__header--centered {
+    text-align: center;
+    margin-bottom: var(--mb-1-5);
+}
+
+.profile__header--centered .profile__avatar {
+    margin: 0 auto var(--mb-1);
+    width: 100px;
+    height: 100px;
+}
+
+.profile__header--centered .profile__name {
+    font-size: var(--h2-font-size);
+}
+
+.profile__header--centered .profile__tagline {
+    font-size: var(--normal-font-size);
+    color: var(--text-color-secondary);
+}
+
+/* Social Icon Highlight Effect */
+.profile__social .social__link.highlight {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px var(--shadow-color);
+    border-color: var(--primary-brown);
+}
+
+/* Removed platform-specific border-color overrides for consistent highlight border */
+/* .profile__social .social__link.highlight--google { border-color: #DB4437; } */
+/* .profile__social .social__link.highlight--youtube { border-color: #FF0000; } */
+/* .profile__social .social__link.highlight--facebook { border-color: #1877F2; } */
+/* .profile__social .social__link.highlight--instagram { border-color: #E4405F; } */
+/* Note: If these classes had other properties, only border-color would be removed. */
+/* Since they only had border-color, the entire rules can be commented out or removed. */
+
+
+/* Stats Slideshow Styling */
+.profile__stats-slideshow {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--mb-2);
+    padding-top: var(--mb-1-5);
+    border-top: 1px solid var(--border-color);
+    text-align: center; /* User-provided */
+    flex-wrap: wrap;
+    gap: var(--mb-1);
+}
+
+.profile__stats-slideshow .profile__stat {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInStats 0.5s ease-out forwards;
+    display: flex;
+    flex-direction: column; /* Number above Label */
+    align-items: center;   /* Center items horizontally in the column */
+    flex-basis: 120px;
+    flex-grow: 1;
+    min-width: 100px;
+    padding: var(--mb-0-5) var(--mb-0-25);
+}
+
+.profile__stats-slideshow .profile__number {
+    display: block; /* Ensure it takes its own line for vertical stacking */
+    font-size: var(--h2-font-size);
+    color: var(--primary-brown);
+    font-weight: var(--font-bold); /* Retained for emphasis */
+    line-height: 1.2; /* Retained for consistency */
+    margin-bottom: var(--mb-0-25);
+}
+
+.profile__stats-slideshow .profile__label {
+    display: block; /* Ensure it takes its own line for vertical stacking */
+    font-size: var(--small-font-size);
+    color: var(--text-color-secondary);
+    text-transform: uppercase; /* Retained for style */
+    letter-spacing: 0.5px; /* Retained for style */
+}
+
+@keyframes fadeInStats {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*========== Hero Flow Lines SVG Animation ==========*/
+.hero_flow_lines_svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind hero content */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.hero_flow_line {
+    fill: none;
+    stroke: var(--text-color); /* Adapts to theme */
+    stroke-width: 2; /* Base thickness */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1500; /* Estimated total path length - adjust if necessary */
+    stroke-dashoffset: 1500; /* Start with line "drawn off" */
+    opacity: 0.3; /* Subtle lines */
+}
+
+/* Varying thickness and animation for different lines */
+.hero_flow_line.line-1 {
+    stroke-width: 1.5;
+    animation: flowLineAnimation 20s linear infinite;
+    animation-delay: -2s;
+}
+
+.hero_flow_line.line-2 {
+    stroke-width: 2.5; /* Thicker line */
+    animation: flowLineAnimation 25s linear infinite; /* Slower, different duration */
+    animation-delay: -7s;
+}
+
+.hero_flow_line.line-3 {
+    stroke-width: 2;
+    animation: flowLineAnimation 18s linear infinite;
+    animation-delay: -12s;
+}
+
+@keyframes flowLineAnimation {
+    0% {
+        stroke-dashoffset: 1500; /* Start 'undrawn' */
+        opacity: 0.1;
+    }
+    25% {
+        stroke-dashoffset: 0;    /* Draw in */
+        opacity: 0.3;            /* Max opacity for this example */
+    }
+    75% {
+        stroke-dashoffset: -1500; /* 'Undraw' from the other end */
+        opacity: 0.3;
+    }
+    100% {
+        stroke-dashoffset: -1500;
+        opacity: 0.1;
+    }
+}
