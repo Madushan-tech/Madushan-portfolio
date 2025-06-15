@@ -442,24 +442,28 @@ class PostsManager {
 
 /*==================== TYPING ANIMATION ====================*/
 class TypingAnimation {
-    constructor(element, texts, speed = 100) {
+    constructor(element, texts, speed = 100) { // Removed heroSectionElement
         this.element = element;
         this.texts = texts;
+        // Removed this.heroSectionElement = heroSectionElement;
         this.speed = speed;
         this.textIndex = 0;
         this.charIndex = 0;
         this.isDeleting = false;
+        // Removed this.backgroundClasses
         this.init();
     }
 
     init() {
-        if (this.element) {
+        if (this.element) { // Reverted check
             this.type();
         }
     }
 
     type() {
         const currentText = this.texts[this.textIndex];
+
+        // Removed background changing logic
         
         if (this.isDeleting) {
             this.element.textContent = currentText.substring(0, this.charIndex - 1);
@@ -484,6 +488,83 @@ class TypingAnimation {
     }
 }
 
+/*==================== SOCIAL SLIDESHOW ====================*/
+class SocialSlideshow {
+    constructor(containerSelector) {
+        this.container = document.querySelector(containerSelector);
+        if (!this.container) return;
+
+        this.icons = this.container.querySelectorAll('.social__link');
+        // Removed direct stat element references from constructor
+
+        this.platforms = [
+            { platform: "youtube", stat1_num: "7.1M", stat1_label: "Subscribers", stat2_num: "520", stat2_label: "Videos", stat3_num: "16%", stat3_label: "Growth" },
+            { platform: "facebook", stat1_num: "2.1M", stat1_label: "Followers", stat2_num: "1.5K", stat2_label: "Posts", stat3_num: "6%", stat3_label: "Growth" },
+            { platform: "instagram", stat1_num: "85K", stat1_label: "Followers", stat2_num: "1.1K", stat2_label: "Posts", stat3_num: "10%", stat3_label: "Growth" },
+            { platform: "twitter", stat1_num: "1.1M", stat1_label: "Followers", stat2_num: "6.2K", stat2_label: "Tweets", stat3_num: "14%", stat3_label: "Growth" },
+            { platform: "linkedin", stat1_num: "20K", stat1_label: "Followers", stat2_num: "250", stat2_label: "Posts", stat3_num: "20%", stat3_label: "Growth" },
+            { platform: "tiktok", stat1_num: "4.2M", stat1_label: "Followers", stat2_num: "950", stat2_label: "Videos", stat3_num: "28%", stat3_label: "Growth" },
+            { platform: "threads", stat1_num: "60K", stat1_label: "Followers", stat2_num: "350", stat2_label: "Posts", stat3_num: "13%", stat3_label: "Growth" }
+        ];
+
+        this.currentIndex = 0;
+        this.init();
+    }
+
+    init() {
+        this.startSlideshow();
+    }
+
+    startSlideshow() {
+        setInterval(() => {
+            this.updateSlideshow();
+            this.currentIndex = (this.currentIndex + 1) % this.platforms.length;
+        }, 3000); // Change stats every 3 seconds
+    }
+
+    updateSlideshow() {
+        // Icon highlighting
+        this.icons.forEach(icon => {
+            icon.classList.remove('highlight');
+            // Remove all possible platform-specific highlight classes
+            this.platforms.forEach(p => icon.classList.remove(`highlight--${p.platform}`));
+        });
+
+        const currentPlatformData = this.platforms[this.currentIndex];
+        const activeIcon = this.container.querySelector(`.social__link[data-platform="${currentPlatformData.platform}"]`);
+
+        if (activeIcon) {
+            activeIcon.classList.add('highlight'); // Add generic highlight
+            activeIcon.classList.add(`highlight--${currentPlatformData.platform}`); // Add specific platform highlight
+        }
+
+        // Stats update
+        const statsContainer = document.querySelector('.profile__stats-slideshow'); // Query current container
+        if (statsContainer && statsContainer.parentNode) {
+            const parent = statsContainer.parentNode;
+            const newStatsContainer = statsContainer.cloneNode(true); // Clone it
+
+            // Query elements within the CLONE
+            const s1n = newStatsContainer.querySelector('#stat-1-number');
+            const s1l = newStatsContainer.querySelector('#stat-1-label');
+            const s2n = newStatsContainer.querySelector('#stat-2-number');
+            const s2l = newStatsContainer.querySelector('#stat-2-label');
+            const s3n = newStatsContainer.querySelector('#stat-3-number');
+            const s3l = newStatsContainer.querySelector('#stat-3-label');
+
+            // Update content of elements IN THE CLONE
+            if (s1n) s1n.textContent = currentPlatformData.stat1_num;
+            if (s1l) s1l.textContent = currentPlatformData.stat1_label;
+            if (s2n) s2n.textContent = currentPlatformData.stat2_num;
+            if (s2l) s2l.textContent = currentPlatformData.stat2_label;
+            if (s3n) s3n.textContent = currentPlatformData.stat3_num;
+            if (s3l) s3l.textContent = currentPlatformData.stat3_label;
+
+            parent.replaceChild(newStatsContainer, statsContainer); // Replace old with updated clone
+        }
+    }
+}
+
 /*==================== INITIALIZATION ====================*/
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all managers
@@ -493,10 +574,14 @@ document.addEventListener('DOMContentLoaded', () => {
     new FormManager();
     new PostsManager();
 
+    // Initialize Social Slideshow
+    new SocialSlideshow('.connect-preview__profile');
+
     // Initialize typing animation if element exists
     const typingElement = document.querySelector('.typing-text');
-    if (typingElement) {
-        new TypingAnimation(typingElement, [
+    // Removed: const heroSection = document.querySelector('.hero');
+    if (typingElement) { // Reverted check
+        new TypingAnimation(typingElement, [ // Removed heroSection argument
             'Entrepreneur',
             'Tech Innovator',
             'Filmmaker',
@@ -531,4 +616,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('🚀 Madushan\'s Portfolio loaded successfully!');
 });
-
