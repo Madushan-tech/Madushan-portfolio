@@ -787,7 +787,8 @@ input, textarea {
 
 /*========== Hero Section ==========*/
 .hero {
-  min-height: 100vh;
+  height: 100vh;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   padding-top: var(--header-height);
@@ -1341,7 +1342,10 @@ input, textarea {
 /*========== Responsive Design for Home Page ==========*/
 @media screen and (max-width: 767px) { /* Adjusted from 768px to prevent conflict with iPad Mini portrait */
   .hero__content {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
     text-align: center;
     gap: var(--mb-2);
   }
